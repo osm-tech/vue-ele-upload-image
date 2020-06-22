@@ -144,6 +144,8 @@ export default {
     },
     // 响应处理函数
     responseFn: Function,
+    // 移除响应函数
+    remove: Function,
     // 文件类型, 例如['png', 'jpg', 'jpeg']
     fileType: {
       type: Array,
@@ -346,6 +348,9 @@ export default {
       }
     },
     handleRemove (index) {
+      if (this.remove) {
+        this.remove()
+      }
       if (this.multiple) {
         const data = [...this.computedValues]
         data.splice(index, 1)
